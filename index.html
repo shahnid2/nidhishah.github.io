@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pearls & Prosecco — Coming Soon</title>
+  <meta name="description" content="Pearls & Prosecco — Coming soon." />
+  <style>
+    :root{
+      --bg1:#070708;
+      --bg2:#0e0f12;
+      --card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.14);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.72);
+      --gold: rgba(246, 229, 171, 0.95);
+      --gold2: rgba(224, 196, 120, 0.95);
+    }
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+      color: var(--text);
+      overflow-x:hidden;
+      background:
+        radial-gradient(1100px 700px at 20% 10%, rgba(246,229,171,0.12), transparent 55%),
+        radial-gradient(900px 600px at 80% 20%, rgba(224,196,120,0.10), transparent 60%),
+        radial-gradient(1200px 900px at 50% 100%, rgba(255,255,255,0.06), transparent 55%),
+        linear-gradient(180deg, var(--bg2), var(--bg1));
+      display:grid;
+      place-items:center;
+      padding:28px;
+    }
+
+    /* pearl-like floating orbs */
+    .pearls{
+      position:fixed;
+      inset:-40px;
+      pointer-events:none;
+      filter: blur(0.2px);
+      opacity: 0.95;
+    }
+    .pearl{
+      position:absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.92), rgba(255,255,255,0.18) 45%, rgba(246,229,171,0.12) 60%, rgba(255,255,255,0.05) 70%, transparent 72%),
+        radial-gradient(circle at 65% 70%, rgba(224,196,120,0.20), transparent 55%);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.55),
+        inset 0 1px 0 rgba(255,255,255,0.20);
+      transform: translate3d(0,0,0);
+      animation: floaty 12s ease-in-out infinite;
+    }
+    .pearl.small{ width:110px; height:110px; opacity:0.85; animation-duration: 10s; }
+    .pearl.tiny{ width:74px; height:74px; opacity:0.75; animation-duration: 9s; }
+    @keyframes floaty{
+      0%,100%{ transform: translateY(0px) translateX(0px); }
+      50%{ transform: translateY(-18px) translateX(10px); }
+    }
+
+    .wrap{
+      width:100%;
+      max-width: 860px;
+      position:relative;
+      text-align:center;
+    }
+
+    .badge{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      backdrop-filter: blur(10px);
+      margin-bottom: 18px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-size: 11px;
+      color: rgba(255,255,255,0.78);
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,0.2));
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.06;
+      letter-spacing: 0.02em;
+      font-weight: 600;
+    }
+    .accent{
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 24px rgba(246,229,171,0.10);
+    }
+    .sub{
+      margin: 0 auto;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+
+    .card{
+      margin: 24px auto 0;
+      padding: 18px;
+      border-radius: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 70px rgba(0,0,0,0.50);
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    input{
+      padding: 13px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(8,8,10,0.55);
+      color: var(--text);
+      outline: none;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-size: 14px;
+    }
+    input:focus{
+      border-color: rgba(246,229,171,0.45);
+      box-shadow: 0 0 0 4px rgba(246,229,171,0.10);
+    }
+    button{
+      padding: 13px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(246,229,171,0.38);
+      background: linear-gradient(180deg, rgba(246,229,171,0.22), rgba(224,196,120,0.12));
+      color: rgba(255,255,255,0.92);
+      cursor: pointer;
+      font-weight: 650;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      letter-spacing: 0.02em;
+    }
+    button:hover{ filter: brightness(1.10); }
+    button:active{ transform: translateY(1px); }
+
+    .links{
+      margin-top: 12px;
+      display:flex;
+      justify-content:center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    .links a{
+      color: rgba(255,255,255,0.80);
+      text-decoration:none;
+      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+    }
+    .links a:hover{
+      border-color: rgba(246,229,171,0.30);
+      background: rgba(246,229,171,0.06);
+    }
+
+    .foot{
+      margin-top: 16px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.60);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+
+    @media (max-width: 520px){
+      .row{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="pearls" aria-hidden="true">
+    <div class="pearl" style="left:6%; top:8%;"></div>
+    <div class="pearl small" style="left:78%; top:14%; animation-delay:-2s;"></div>
+    <div class="pearl tiny" style="left:70%; top:68%; animation-delay:-5s;"></div>
+    <div class="pearl small" style="left:16%; top:70%; animation-delay:-7s;"></div>
+  </div>
+
+  <main class="wrap">
+    <div class="badge"><span class="dot"></span> Pearls • Prosecco • A little magic</div>
+
+    <h1><span class="accent">Pearls &amp; Prosecco</span></h1>
+    <p class="sub">
+      We’re crafting an elegant space for celebrations, stories, and sparkle.
+      <br />Please check back soon — or leave your email for the first toast.
+    </p>
+
+    <section class="card" aria-label="Notify section">
+      <div style="font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color: rgba(255,255,255,0.82);">
+        Get launch updates
+      </div>
+
+      <!-- Demo form (free). Replace later with Mailchimp/ConvertKit if you want to collect emails -->
+      <form class="row" onsubmit="event.preventDefault(); alert('Cheers! You’re on the list.');">
+        <input type="email" required placeholder="you@email.com" aria-label="Email address" />
+        <button type="submit">Notify me</button>
+      </form>
+
+      <div class="links" aria-label="Links">
+        <!-- Replace these with your real links -->
+        <a href="#" onclick="return false;">Instagram</a>
+        <a href="#" onclick="return false;">WhatsApp</a>
+        <a href="mailto:hello@yourdomain.com">Email</a>
+      </div>
+
+      <div class="foot">© <span id="y"></span> Pearls &amp; Prosecco. All rights reserved.</div>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
